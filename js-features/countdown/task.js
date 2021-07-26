@@ -1,11 +1,14 @@
-const clock = function() {
-    const timerId = document.getElementById("timer");
-    timerId.textContent -= 1;
+const timerElement = document.getElementById("timer");
+let count = Number(timerElement.textContent);
 
-    if (parseInt(timerId.textContent) === 0) {
-        alert("Вы победили в конкурсе!");
+const clock = function() {
+    count -= 1;
+    timerElement.textContent = count;
+    
+    if (count === 0) {
         clearInterval(timerId);
+        alert("Вы победили в конкурсе!");
     }
 }
 
-setInterval(clock, 1000);
+timerId = setInterval(clock, 1000);
