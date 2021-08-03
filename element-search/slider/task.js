@@ -37,13 +37,10 @@ arrowNext.onclick = function() {
   installableSlide();
 }
 
-dots.forEach(function(dot) {
-  if (dot.classList.contains("slider__dot slider__dot_active")) {
-    return;
-  } else {
+dots.forEach(function(dot, i) {
+  dot.onclick = () => {
     removableSlide();
+    activeSlider = i;
     installableSlide();
   }
 });
-
-//При кликах по точкам никак не переключается, что-то упустил...и напутал(
