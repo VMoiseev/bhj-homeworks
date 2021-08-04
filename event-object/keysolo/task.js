@@ -15,16 +15,21 @@ class Game {
     this.winsElement.textContent = 0;
     this.lossElement.textContent = 0;
   }
+  
+  // Начало ДЗ_Соло на клавиатуре
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+    document.addEventListener("keydown", e => {
+      const currentSymbol = this.currentSymbol.textContent;
+      if (currentSymbol === e.key) {
+        this.success();
+      } else {
+        this.fail();
+      }
+    });
   }
+
+  // Конец ДЗ_Соло на клавиатуре
 
   success() {
     this.currentSymbol.classList.add('symbol_correct');
