@@ -5,7 +5,7 @@ const tasksForm = document.getElementById("tasks__form");
 tasksForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (taskInput.value) {
+  if (taskInput.value.trim()) {
     taskList.innerHTML += `
     <div class="task">
       <div class="task__title">
