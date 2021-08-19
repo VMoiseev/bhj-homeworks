@@ -1,24 +1,18 @@
-const hasTooltip = document.querySelectorAll(".has-tooltip");
+const hasTooltips = Array.from(document.querySelectorAll(".has-tooltip"));
+const tooltip = document.createElement("div");
+tooltip.style.display = "block";
 
-for (let index of hasTooltip) {
-  index.addEventListener("click", (e) => {
+for (let hasTooltip of hasTooltips) {
+  const title = hasTooltip.getAttribute("title");
+  hasTooltip.insertAdjacentHTML('afterEnd', `<div class = 'tooltip' style = ''> ${title} </div>`);
+
+  hasTooltip.addEventListener("click", (e) => {
     e.preventDefault();
 
-    tooltip_active = document.querySelector(".tooltip");
-
-    if (tooltip_active != null) {
-      tooltip_active.remove();
-    }
-
-    const title = e.target.getAttribute("title");
-    const tooltip = document.createElement("div");
-    const tooltipPosition = e.target.getBoundingClientRect();
+    let tooltip = hasTooltip.nextSibling;
+    const tooltipPosition = hasTooltip.getBoundingClientRect();
     tooltip.style.left = `${tooltipPosition.left}px`;
     tooltip.style.top = `${tooltipPosition.bottom}px`;
-    tooltip.classList.add("tooltip");
-    tooltip.textContent = title;
-    tooltip.style.display = "block";
-    document.addEventListener("scroll", () => {tooltip.style.display = "none"});
-    index.appendChild(tooltip);
+    tooltip.classList.toggle("tooltip_active");
   });
 }
