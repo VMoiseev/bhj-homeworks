@@ -12,6 +12,9 @@ for (let index of hasTooltip) {
 
     const title = e.target.getAttribute("title");
     const tooltip = document.createElement("div");
+    const tooltipPosition = e.target.getBoundingClientRect();
+    tooltip.style.left = `${tooltipPosition.left}px`;
+    tooltip.style.top = `${tooltipPosition.bottom}px`;
     tooltip.classList.add("tooltip");
     tooltip.textContent = title;
     tooltip.style.display = "block";
