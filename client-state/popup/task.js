@@ -7,7 +7,7 @@ closePopup.addEventListener("click", () => {
 });
 
 window.addEventListener("load", () => {
-  if (!document.cookie.includes("status=active")) {
+  if (!document.cookie.includes("modal=close")) {
     popup.classList.add("modal_active");
   }
 });
